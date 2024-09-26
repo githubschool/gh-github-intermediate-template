@@ -8,7 +8,7 @@ import { GameState, Position } from './types.js'
  */
 export class Grid {
   /** Size */
-  static size: number
+  static size: number = 4
   /** Cells */
   static cells: (Tile | null)[][]
 
@@ -157,26 +157,4 @@ export class Grid {
       position.y < Grid.size
     )
   }
-
-  // /**
-  //  * Gets the current cells as tiles.
-  //  *
-  //  * @returns Available Cells as Tiles
-  //  */
-  // static currentCells(): Tile[] {
-  //   const cells: Tile[] = []
-
-  //   Grid.eachCell(function (position: Position, tile: Tile | null) {
-  //     if (tile) cells.push(tile)
-  //   })
-
-  //   return cells
-  // }
-
-  // /**
-  //  * Returns true if the grid is empty.
-  //  */
-  // static isEmpty(): boolean {
-  //   return Grid.availableCells().length === Grid.size * Grid.size
-  // }
 }

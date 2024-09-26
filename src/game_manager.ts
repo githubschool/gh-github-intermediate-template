@@ -132,7 +132,6 @@ export class GameManager {
    * Sends the updated grid to the actuator.
    */
   static actuate() {
-    console.log(Grid.cells)
     if (LocalStorageManager.getBestScore() < GameManager.state.score)
       LocalStorageManager.setBestScore(GameManager.state.score)
 

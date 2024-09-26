@@ -58,7 +58,7 @@ export class HTMLActuator {
    *
    * @param container Container
    */
-  static clearContainer(container: any): void {
+  static clearContainer(container: Element): void {
     while (container.firstChild) container.removeChild(container.firstChild)
   }
 
