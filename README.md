@@ -1,5 +1,11 @@
 # GitHub Intermediate - Project Repository
 
+![Continuous Integration](https://github.com/githubschool/gh-github-intermediate-template/actions/workflows/continuous-integration.yml/badge.svg)
+![Continuous Delivery](https://github.com/githubschool/gh-github-intermediate-template/actions/workflows/continuous-delivery.yml/badge.svg)
+![CodeQL](https://github.com/githubschool/gh-github-intermediate-template/actions/workflows/codeql.yml/badge.svg)
+![Coverage](./badges/coverage.svg)
+![Linter](https://github.com/githubschool/gh-github-intermediate-template/actions/workflows/linter.yml/badge.svg)
+
 This is your project repository for the GitHub Intermediate training offering.
 Within this repository, you will find a number of issues that you will be
 working on throughout the training. The final completed project will be a
