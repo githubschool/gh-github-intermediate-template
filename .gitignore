@@ -9,3 +9,6 @@ reports
 
 # OS Metadata
 .DS_Store
+
+# Linter Reports
+megalinter-reports/

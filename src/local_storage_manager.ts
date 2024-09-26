@@ -48,7 +48,16 @@ export class LocalStorageManager {
    * @param gameState Game State
    */
   static setGameState(gameState: GameState): void {
-    LocalStorageManager.storage.setItem('gameState', JSON.stringify(gameState))
+    LocalStorageManager.storage.setItem(
+      'gameState',
+      JSON.stringify({
+        ...gameState,
+        grid: {
+          size: gameState.grid.size,
+          cells: gameState.grid.cells
+        }
+      })
+    )
   }
 
   /**

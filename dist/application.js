@@ -410,7 +410,6 @@ class KeyboardInputManager {
      * Listens for events.
      */
     static listen() {
-        console.log('CALLING');
         const map = {
             ArrowUp: 0,
             ArrowRight: 1,
@@ -513,7 +512,13 @@ class LocalStorageManager {
      * @param gameState Game State
      */
     static setGameState(gameState) {
-        LocalStorageManager.storage.setItem('gameState', JSON.stringify(gameState));
+        LocalStorageManager.storage.setItem('gameState', JSON.stringify({
+            ...gameState,
+            grid: {
+                size: gameState.grid.size,
+                cells: gameState.grid.cells
+            }
+        }));
     }
     /**
      * Clears the game state.
@@ -602,8 +607,6 @@ class GameManager {
             // Add the initial tiles
             GameManager.addStartTiles();
         }
-        // Save the game state.
-        // LocalStorageManager.setGameState(GameManager.state)
         // Update the actuator
         GameManager.actuate();
     }
@@ -641,6 +644,9 @@ class GameManager {
             bestScore: LocalStorageManager.getBestScore(),
             terminated: GameManager.isGameTerminated()
         });
+        // Save the game state.
+        GameManager.state.grid = Grid;
+        LocalStorageManager.setGameState(GameManager.state);
     }
     /**
      * Saves all tile positions and removes merge info.

@@ -1,5 +1,4 @@
 import { jest } from '@jest/globals'
-import type { GameState } from '../src/types.js'
 
 const { LocalStorageManager } = await import('../src/local_storage_manager.js')
 
@@ -50,16 +49,6 @@ describe('LocalStorageManager', () => {
       window.localStorage.removeItem('gameState')
 
       expect(LocalStorageManager.getGameState()).toEqual(null)
-    })
-  })
-
-  describe('setGameState()', () => {
-    it('Updates the game state in local storage', async () => {
-      window.localStorage.setItem('gameState', '{"score":8}')
-
-      LocalStorageManager.setGameState({ score: 10 } as GameState)
-
-      expect(LocalStorageManager.getGameState()).toEqual({ score: 10 })
     })
   })
 

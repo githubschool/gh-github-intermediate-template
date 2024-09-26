@@ -102,9 +102,6 @@ export class GameManager {
       GameManager.addStartTiles()
     }
 
-    // Save the game state.
-    // LocalStorageManager.setGameState(GameManager.state)
-
     // Update the actuator
     GameManager.actuate()
   }
@@ -144,6 +141,10 @@ export class GameManager {
       bestScore: LocalStorageManager.getBestScore(),
       terminated: GameManager.isGameTerminated()
     })
+
+    // Save the game state.
+    GameManager.state.grid = Grid
+    LocalStorageManager.setGameState(GameManager.state)
   }
 
   /**

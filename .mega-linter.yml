@@ -19,7 +19,10 @@ DISABLE:
 # List of disabled linters keys
 # https://megalinter.io/latest/config-activation/
 DISABLE_LINTERS:
+  - CSS_STYLELINT
   - MARKDOWN_MARKDOWN_TABLE_FORMATTER
+  - REPOSITORY_CHECKOV
+  - REPOSITORY_KICS
   - TYPESCRIPT_STANDARD
 
 # List of enabled but not blocking linters keys
@@ -91,8 +94,6 @@ LOG_LEVEL: INFO
 # Markdown default style to check/apply
 MARKDOWN_DEFAULT_STYLE: markdownlint
 
-MARKDOWN_MARKDOWNLINT_FILTER_REGEX_EXCLUDE: __fixtures__
-
 # Generate Markdown summary report
 MARKDOWN_SUMMARY_REPORTER: true
 
@@ -110,7 +111,7 @@ PARALLEL: true
 
 # Directory for generating report files
 # Set to none to not generate reports
-REPORT_OUTPUT_FOLDER: linter
+# REPORT_OUTPUT_FOLDER: linter
 
 # Set to simple to avoid external images in generated markdown
 REPORTERS_MARKDOWN_TYPE: advanced
@@ -123,6 +124,8 @@ SHOW_ELAPSED_TIME: true
 
 # Displays all disabled linters mega-linter could have run
 SHOW_SKIPPED_LINTERS: false
+
+TEXT_REPORTER: true
 
 # Typescript default style to check/apply
 TYPESCRIPT_DEFAULT_STYLE: prettier

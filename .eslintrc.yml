@@ -13,6 +13,7 @@ globals:
 ignorePatterns:
   - coverage
   - dist
+  - megalinter-reports
   - node_modules
 
 parser: '@typescript-eslint/parser'
