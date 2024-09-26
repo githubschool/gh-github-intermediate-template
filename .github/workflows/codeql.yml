@@ -5,12 +5,13 @@ name: CodeQL Analysis
 # Only run on pull requests targeting `main`, direct pushes to `main`, or when
 # invoked manually.
 on:
-  pull_request:
-    branches:
-      - main
-  push:
-    branches:
-      - main
+  # TODO - Enable GHAS
+  # pull_request:
+  #   branches:
+  #     - main
+  # push:
+  #   branches:
+  #     - main
   workflow_dispatch:
 
 # Each job invoked by this workflow will have the following permissions assigned
