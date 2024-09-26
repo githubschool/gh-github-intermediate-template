@@ -37,16 +37,4 @@ export class Tile {
   updatePosition(position: Position): void {
     this.position = position
   }
-
-  /**
-   * Serializes the tile to a JSON object.
-   *
-   * @returns Serialized Tile
-   */
-  serialize(): { position: Position; value: number } {
-    return {
-      position: this.position,
-      value: this.value
-    }
-  }
 }
