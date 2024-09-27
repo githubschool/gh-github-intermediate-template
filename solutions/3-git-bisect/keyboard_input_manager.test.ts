@@ -11,7 +11,7 @@ describe('KeyboardInputManager', () => {
 
   describe('constructor', () => {
     it('Sets events and listens', async () => {
-      // TODO: What actually needs to be tested here?
+      // Lab 3: Git Bisect
       const listen = jest
         .spyOn(KeyboardInputManager, 'listen')
         .mockImplementation(() => {})
