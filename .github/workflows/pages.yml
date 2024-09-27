@@ -28,7 +28,7 @@ jobs:
     # the deployment to the URL of the GitHub Pages site.
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deploy.outputs.page_url }}
 
     steps:
       - name: Checkout

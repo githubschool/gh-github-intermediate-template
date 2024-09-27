@@ -1,0 +1,102 @@
+# When a hotfix needs to be published for a previous release, this workflow will
+# build and publish the Node.js package to GitHub Packages, publish the
+# container image to your preferred container registry, and generate a release.
+#
+# Packages and images are tagged using the SemVer-compliant version indicated in
+# the project's manifest file (e.g., `package.json` for Node.js projects). E.g.
+# if the version is `1.2.3` and the container is being published to GitHub
+# Container Registry, the following will be published:
+#
+# - Package: `<package-name>@1.2.3`
+# - Image:   `ghcr.io/USPS/<repository>:v1.2.3`
+#            `ghcr.io/USPS/<repository>:v1.2`
+#            `ghcr.io/USPS/<repository>:v1`
+#
+# Note: Unlike the continuous delivery workflow, this workflow does not update
+#       the `ghcr.io/USPS/<repository>:latest` image.
+#
+# For prerelease versions, e.g. `1.2.3-SNAPSHOT`, the following will be
+# published:
+#
+# - Package: `<package-name>@1.2.3-SNAPSHOT`
+# - Image:   `ghcr.io/USPS/<repository>:v1.2.3-SNAPSHOT`
+name: Publish Hotfix
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: The hotfix branch name (e.g. `hotfix/1.2.3`)
+        required: true
+
+# prettier-ignore
+env:
+  ARM_CLIENT_ID: ${{ secrets.FAST_TRACK_ARM_CLIENT_ID }}
+  ARM_SUBSCRIPTION_ID: ${{ secrets.FAST_TRACK_ARM_SUBSCRIPTION_ID }}
+  ARM_TENANT_ID: ${{ secrets.FAST_TRACK_ARM_TENANT_ID }}
+  CONTAINER_REGISTRY: ${{ vars.CONTAINER_REGISTRY }}
+  DEPLOY_KEY: ${{ secrets.CLOUD_STARTER_APP_DEPLOY_KEY }}
+  DEPLOY_REPO: ${{ vars.DEPLOY_REPO }}
+  MANIFEST_PATH: package.json
+  NODE_VERSION_FILE: .node-version
+  NPM_CACHE: npm
+  NPM_REGISTRY: https://registry.npmjs.org
+  WORKING_DIRECTORY: ${{ github.workspace }}
+
+permissions:
+  actions: read
+  contents: write
+  id-token: write
+  packages: write
+  security-events: write
+
+jobs:
+  hotfix:
+    name: Release Node.js Hotfix
+    runs-on:
+      group: github_hosted_large_runners_static_ips
+
+    steps:
+      - name: Get GitHub App Token
+        id: token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.FAST_TRACK_LINTER_APP_ID }}
+          private-key: ${{ secrets.FAST_TRACK_LINTER_APP_PEM_FILE }}
+          owner: ${{ github.repository_owner }}
+
+      - name: Hotfix
+        id: hotfix
+        uses: usps/fast-track-app-hotfix-action@v2
+        with:
+          branch: ${{ inputs.branch }}
+          config_token: ${{ steps.token.outputs.token }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          language: javascript-typescript
+          manifest_path: ${{ env.MANIFEST_PATH }}
+          npm_cache: ${{ env.NPM_CACHE }}
+          npm_registry_url: ${{ env.NPM_REGISTRY }}
+          npm_version_file: ${{ env.NODE_VERSION_FILE }}
+          registry: ${{ env.CONTAINER_REGISTRY }}
+          working_directory: ${{ env.WORKING_DIRECTORY }}
+
+          # Required to authenticate to GitHub Packages
+          registry_username: ${{ secrets.CONTAINER_REGISTRY_USERNAME }}
+          registry_password: ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
+
+          # Commands are run in the following order.
+          init_command: npm run init --if-present
+          install_command: npm ci
+          format_command: npm run format:check --if-present
+          lint_command: npm run lint --if-present
+          build_command: npm run build --if-present
+          test_command:
+            npm run ci-test --if-present -- --ci --reporters=default
+            --reporters=jest-junit
+          publish_command: npm publish
+
+          # CSP authentication (required to publish to the CSP-specific
+          # container registry).
+          arm_client_id: ${{ env.ARM_CLIENT_ID }}
+          arm_subscription_id: ${{ env.ARM_SUBSCRIPTION_ID }}
+          arm_tenant_id: ${{ env.ARM_TENANT_ID }}
