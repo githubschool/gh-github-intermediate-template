@@ -14,6 +14,12 @@ web-based game deployed to GitHub Pages.
 Once deployed, you will be able to access your game at the link in the **About**
 column of the repository's home page.
 
+## Prerequisites
+
+- [GitHub.com Account](https://github.com)
+- [Git](https://git-scm.com/downloads)
+- (Optional) [Node.js v22+](https://nodejs.org/en)
+
 ## Activities and Labs
 
 TODO: Add a list of activities and labs that are included in this training.
