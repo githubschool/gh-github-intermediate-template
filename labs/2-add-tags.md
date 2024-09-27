@@ -144,9 +144,3 @@ displayed on GitHub Pages the next time you refresh.
 
 If you're having trouble with any of the steps, you can ask for help in the
 meeting chat.
-
-The code changes for this lab can be found in the `solutions` directory.
-
-- Copy the contents of
-  [`solutions/1-add-a-feature/index.html`](../solutions/1-add-a-feature/index.html)
-  and replace the contents of [`index.html`](../index.html)
