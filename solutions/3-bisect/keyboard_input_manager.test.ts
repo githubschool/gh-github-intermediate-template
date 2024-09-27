@@ -12,7 +12,14 @@ describe('KeyboardInputManager', () => {
   describe('constructor', () => {
     it('Sets events and listens', async () => {
       // TODO: What actually needs to be tested here?
-      expect(true).toBe(false)
+      const listen = jest
+        .spyOn(KeyboardInputManager, 'listen')
+        .mockImplementation(() => {})
+
+      new KeyboardInputManager()
+
+      expect(KeyboardInputManager.events).toMatchObject({})
+      expect(listen).toHaveBeenCalledTimes(1)
     })
   })
 
