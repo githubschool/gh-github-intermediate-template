@@ -9,6 +9,8 @@
     "__fixtures__",
     "__mocks__",
     "__tests__",
+    "labs",
+    "solutions",
     "src",
     "jest.config.ts",
     "rollup.config.ts"
