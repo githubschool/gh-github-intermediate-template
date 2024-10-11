@@ -1,7 +1,7 @@
 {
   "name": "@githubschool/gh-github-intermediate-template",
   "description": "GitHub Intermediate Training - Template",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "scripts": {
     "bundle": "npm run format:write && npm run package",
     "ci-test": "NODE_OPTIONS=--experimental-vm-modules NODE_NO_WARNINGS=1 npx jest",
@@ -42,8 +42,8 @@
     "@rollup/plugin-typescript": "^12.1.0",
     "@types/jest": "^29.5.13",
     "@types/node": "^22.7.3",
-    "@typescript-eslint/eslint-plugin": "^8.7.0",
-    "@typescript-eslint/parser": "^8.7.0",
+    "@typescript-eslint/eslint-plugin": "^8.8.0",
+    "@typescript-eslint/parser": "^8.8.0",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.3",
@@ -57,7 +57,7 @@
     "make-coverage-badge": "^1.2.0",
     "prettier": "^3.3.3",
     "prettier-eslint": "^16.3.0",
-    "rollup": "^4.22.5",
+    "rollup": "^4.24.0",
     "ts-jest": "^29.2.5",
     "ts-jest-resolver": "^2.0.1",
     "ts-node": "^10.9.2",

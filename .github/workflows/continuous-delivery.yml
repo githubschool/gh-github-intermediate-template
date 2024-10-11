@@ -1,23 +1,5 @@
 # When a PR is merged, or when run manually, this workflow will build and
-# the package to GitHub Packages, publish the container image to your preferred
-# container registry, and generate a release.
-#
-# Packages and images are tagged using the SemVer-compliant version indicated in
-# the project's manifest file (e.g., `pom.xml` for Java projects). E.g. if the
-# version is `1.2.3` and the container is being published to GitHub Container
-# Registry, the following will be published:
-#
-# - Package: `<package-name>@1.2.3`
-# - Image:   `ghcr.io/USPS/<repository>:latest`
-#            `ghcr.io/USPS/<repository>:v1.2.3`
-#            `ghcr.io/USPS/<repository>:v1.2`
-#            `ghcr.io/USPS/<repository>:v1`
-#
-# For prerelease versions, e.g. `1.2.3-pre.4`, the following will be
-# published:
-#
-# - Package: `<package-name>@1.2.3-pre.4`
-# - Image:   `ghcr.io/USPS/<repository>:v1.2.3-pre.4`
+# package the GitHub Pages artifacts.
 name: Continuous Delivery
 
 on:
@@ -27,39 +9,15 @@ on:
     branches:
       - main
   workflow_dispatch:
-    inputs:
-      env:
-        description: The environment to update
-        required: true
-        default: dev
-        type: choice
-        options:
-          - dev
-          - sit
-      image:
-        description: The tag of the updated image
-        required: true
-      yaml_property:
-        description: The property in the deployment manifest to update
-        required: true
-        default: image.tag
 
 # prettier-ignore
 env:
-  ARM_CLIENT_ID: ${{ secrets.FAST_TRACK_ARM_CLIENT_ID }}
-  ARM_SUBSCRIPTION_ID: ${{ secrets.FAST_TRACK_ARM_SUBSCRIPTION_ID }}
-  ARM_TENANT_ID: ${{ secrets.FAST_TRACK_ARM_TENANT_ID }}
-  CONTAINER_REGISTRY: ${{ vars.CONTAINER_REGISTRY }}
-  DEPLOY_KEY: ${{ secrets.CLOUD_STARTER_APP_DEPLOY_KEY }}
-  DEPLOY_REPO: ${{ vars.DEPLOY_REPO }}
-  ENVIRONMENT: ${{ inputs.env || 'sit' }}
   NODE_CACHE: npm
   NODE_PUBLISH_URL: https://npm.pkg.github.com
   NODE_REGISTRY_URL: https://registry.npmjs.org
   NODE_VERSION_FILE: .node-version
   MANIFEST_PATH: package.json
   WORKING_DIRECTORY: ${{ github.workspace }}
-  YAML_PROPERTY: ${{ inputs.yaml_property || 'image.tag' }}
 
 permissions:
   actions: read
@@ -71,8 +29,7 @@ permissions:
 jobs:
   cd:
     name: Release Node.js Project
-    runs-on:
-      group: github_hosted_large_runners_static_ips
+    runs-on: ubuntu-latest
 
     # Only run this job when non-Dependabot PRs are merged or when run manually.
     if: |
@@ -81,69 +38,30 @@ jobs:
       startsWith(github.head_ref, 'dependabot/') == false)
 
     steps:
-      - name: Get GitHub App Token
-        id: token
-        uses: actions/create-github-app-token@v1
-        with:
-          app-id: ${{ secrets.FAST_TRACK_LINTER_APP_ID }}
-          private-key: ${{ secrets.FAST_TRACK_LINTER_APP_PEM_FILE }}
-          owner: ${{ github.repository_owner }}
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
 
-      - name: Continuous Delivery
-        id: cd
-        uses: usps/fast-track-app-cd-action@v2
+      - name: Setup GitHub Pages
+        id: configure-pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Artifact
+        id: upload-artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          base_ref: main
-          head_ref: ${{ github.event.pull_request.head.ref || github.ref }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          npm_auth_token: ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
-          npm_cache: ${{ env.NODE_CACHE }}
-          npm_publish_url: ${{ env.NODE_PUBLISH_URL }}
-          npm_registry_url: ${{ env.NODE_REGISTRY_URL }}
-          npm_version_file: ${{ env.NODE_VERSION_FILE }}
-          language: javascript-typescript
-          manifest_path: ${{ env.MANIFEST_PATH }}
-          pull_number: ${{ github.event.pull_request.number }}
-          registry: ${{ env.CONTAINER_REGISTRY }}
-          working_directory: ${{ env.WORKING_DIRECTORY }}
+          path: .
+
+      - name: Tag
+        id: tag
+        uses: issue-ops/semver@v2
+        with:
+          manifest-path: package.json
           workspace: ${{ github.workspace }}
+          ref: main
 
-          # Required to authenticate to GitHub Packages
-          registry_username: ${{ secrets.CONTAINER_REGISTRY_USERNAME }}
-          registry_password: ${{ secrets.CONTAINER_REGISTRY_PASSWORD }}
-
-          # Commands are run in the following order.
-          init_command: npm run init --if-present
-          install_command: npm ci
-          build_command: npm run build --if-present
-          publish_command: npm publish
-
-          # CSP authentication (required to publish to the CSP-specific
-          # container registry).
-          arm_client_id: ${{ env.ARM_CLIENT_ID }}
-          arm_subscription_id: ${{ env.ARM_SUBSCRIPTION_ID }}
-          arm_tenant_id: ${{ env.ARM_TENANT_ID }}
-
-      - if: ${{ env.DEPLOY_KEY != '' }}
-        name: Update Deployment Manifest
-        id: update-manifest
-        uses: USPS/fast-track-deployment-manifest-action@v3
+      - name: Create Release
+        id: release
+        uses: issue-ops/releaser@v2
         with:
-          app_name: ${{ github.event.repository.name }}
-          deploy_key: ${{ env.DEPLOY_KEY }}
-          deploy_repo: ${{ env.DEPLOY_REPO }}
-          environment: ${{ env.ENVIRONMENT }}
-          workspace: ${{ github.workspace }}
-          yaml_property: ${{ env.YAML_PROPERTY }}
-
-          # Format: <repo>:<version>@<digest>
-          # prettier-ignore
-          yaml_value: ${{ github.event.repository.name }}:${{ steps.cd.outputs.version }}@${{ steps.cd.outputs.digest }}
-
-      - if: ${{ env.DEPLOY_KEY == '' }}
-        name: Alert Deploy Key Missing
-        id: alert
-        run: |
-          echo "Deploy Key is missing. Deployment manifest will not be updated."
-          echo "Alert the CASI Ops team to resolve this issue."
-          exit 1
+          tag: v${{ steps.tag.outputs.version }}
