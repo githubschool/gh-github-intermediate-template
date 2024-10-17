@@ -39,6 +39,21 @@ jobs:
         id: checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        id: setup-node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - name: Install Dependencies
+        id: install
+        run: npm install
+
+      - name: Package
+        id: package
+        run: npm run package
+
       - name: Setup GitHub Pages
         id: configure-pages
         uses: actions/configure-pages@v5

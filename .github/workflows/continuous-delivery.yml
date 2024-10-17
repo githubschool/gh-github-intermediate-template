@@ -8,15 +8,6 @@ on:
       - main
   workflow_dispatch:
 
-# prettier-ignore
-env:
-  NODE_CACHE: npm
-  NODE_PUBLISH_URL: https://npm.pkg.github.com
-  NODE_REGISTRY_URL: https://registry.npmjs.org
-  NODE_VERSION_FILE: .node-version
-  MANIFEST_PATH: package.json
-  WORKING_DIRECTORY: ${{ github.workspace }}
-
 permissions:
   actions: read
   contents: write
@@ -33,6 +24,21 @@ jobs:
       - name: Checkout
         id: checkout
         uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        id: setup-node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - name: Install Dependencies
+        id: install
+        run: npm install
+
+      - name: Package
+        id: package
+        run: npm run package
 
       - name: Upload Artifact
         id: upload-artifact

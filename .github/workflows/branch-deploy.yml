@@ -8,14 +8,6 @@ on:
     types:
       - created
 
-env:
-  NODE_CACHE: npm
-  NODE_PUBLISH_URL: https://npm.pkg.github.com
-  NODE_REGISTRY_URL: https://registry.npmjs.org
-  NODE_VERSION_FILE: .node-version
-  MANIFEST_PATH: package.json
-  WORKING_DIRECTORY: ${{ github.workspace }}
-
 permissions:
   actions: read
   checks: write
@@ -85,6 +77,21 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ needs.start.outputs.ref }}
+
+      - name: Setup Node.js
+        id: setup-node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - name: Install Dependencies
+        id: install
+        run: npm install
+
+      - name: Package
+        id: package
+        run: npm run package
 
       - name: Setup GitHub Pages
         id: configure-pages
