@@ -708,7 +708,6 @@ class GameManager {
                         tile.updatePosition(positions.next);
                         // Update the score
                         GameManager.state.score += merged.value;
-                        // GameManager.state.grid = Grid
                         // The mighty 2048 tile
                         if (merged.value === 2048)
                             GameManager.state.won = true;
