@@ -106,6 +106,25 @@ push changes directly to `main`.
    At this point, you should see an error message in your terminal, indicating
    that you cannot push changes directly to the `main` branch.
 
+   ```plain
+   remote: error: GH013: Repository rule violations found for refs/heads/main.
+   remote: Review all repository rules at https://github.com/githubschool/gh-github-intermediate-template/rules?ref=refs%2Fheads%2Fmain
+   remote:
+   remote: - Changes must be made through a pull request.
+   remote:
+   To github.com:githubschool/gh-github-intermediate-template.git
+    ! [remote rejected] main -> main (push declined due to repository rule violations)
+   error: failed to push some refs to 'github.com:githubschool/gh-github-intermediate-template.git'
+   ```
+
+## Task 4: Reset the `main` Branch
+
+1. In your terminal, reset the `main` branch to the previous commit
+
+   ```bash
+   git reset --hard HEAD~1
+   ```
+
 ## Need Help?
 
 If you're having trouble with any of the steps, you can ask for help in the
