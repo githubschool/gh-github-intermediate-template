@@ -437,9 +437,9 @@ class KeyboardInputManager {
             }
         });
         // Respond to button presses.
-        KeyboardInputManager.bindButtonPress('.restart-button', KeyboardInputManager.restart);
         KeyboardInputManager.bindButtonPress('.retry-button', KeyboardInputManager.restart);
         KeyboardInputManager.bindButtonPress('.keep-playing-button', KeyboardInputManager.keepPlaying);
+        // Lab 5: New Game Button
     }
     /**
      * Emits a restart event.

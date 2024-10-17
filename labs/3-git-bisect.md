@@ -16,7 +16,7 @@ introduced, but you know it wasn't there when you first created the game.
    git bisect start
    ```
 
-1. Indicate a commit where you know the code contains the change you’re looking
+1. Indicate a commit where you know the code contains the change you're looking
    for
 
    Omitting the commit hash will tell Git that the current commit is bad.
@@ -34,7 +34,7 @@ introduced, but you know it wasn't there when you first created the game.
    From the output of the above command, find a commit where the code change is
    not present and copy the commit hash.
 
-1. Indicate a commit where you know the code does not contain the change you’re
+1. Indicate a commit where you know the code does not contain the change you're
    looking for
 
    Replace `<sha>` with the commit hash you found in the previous step.

@@ -7,7 +7,7 @@ feature branch and move it to the latest commit on `main`.
 
 The product team has told us that a work-in-progress feature needs to be
 reprioritized. This feature was partially completed, and then put on hold. The
-branch is still present, so let’s bring it back up to date and deliver that
+branch is still present, so let's bring it back up to date and deliver that
 feature.
 
 ## Task 1: Checkout the Feature Branch
@@ -129,7 +129,7 @@ branch so you can merge your changes!
 1. Wait for the workflow run to complete
 1. Click the **Code** tab
 1. Click the link to your game
-1. Verify the rules are now displayed on the game page
+1. Verify the game score updates are animated
 
 ## Need Help?
 
