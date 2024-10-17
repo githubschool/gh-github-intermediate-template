@@ -117,7 +117,7 @@ ones.
 1. Create a new feature branch
 
    ```bash
-   git checkout -b fix-unit-test
+   git checkout -b fix/unit-test
    ```
 
 1. Open
@@ -177,17 +177,17 @@ so you can start working on something new!
    git checkout main
    ```
 
-## Task 7: Merge the `fix-unit-test` Branch
+## Task 7: Merge the `fix/unit-test` Branch
 
-Now that you're on the `main` branch, you should merge the `fix-unit-test`
+Now that you're on the `main` branch, you should merge the `fix/unit-test`
 branch into the `main` branch. That way, when your changes are pushed, the unit
 tests will pass the next time the run as part of the continuous integration
 process.
 
-1. Merge the `fix-unit-test` branch into the `main` branch
+1. Merge the `fix/unit-test` branch into the `main` branch
 
    ```bash
-   git merge fix-unit-test
+   git merge fix/unit-test
    ```
 
 1. Push your changes to GitHub

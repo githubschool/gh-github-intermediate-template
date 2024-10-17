@@ -16,7 +16,7 @@ Before you start adding a feature, you should create a branch to work on.
 1. Create and checkout a new branch
 
    ```bash
-   git checkout -b rules
+   git checkout -b feature/rules
    ```
 
 ## Task 2: Add the Rules
@@ -77,16 +77,16 @@ so you can start working on something new!
    git checkout main
    ```
 
-## Task 6: Merge the `rules` Branch
+## Task 6: Merge the `feature/rules` Branch
 
-Now that you're on the `main` branch, you should merge the `rules` branch into
-the `main` branch. That way, when your changes are pushed, the rules will be
-displayed on GitHub Pages the next time you refresh.
+Now that you're on the `main` branch, you should merge the `feature/rules`
+branch into the `main` branch. That way, when your changes are pushed, the rules
+will be displayed on GitHub Pages the next time you refresh.
 
-1. Merge the `rules` branch into the `main` branch
+1. Merge the `feature/rules` branch into the `main` branch
 
    ```bash
-   git merge rules
+   git merge feature/rules
    ```
 
 1. Push your changes to GitHub
@@ -97,7 +97,7 @@ displayed on GitHub Pages the next time you refresh.
 
 1. Navigate to your repository on GitHub.com
 1. Click the **Actions** tab
-1. Click the running **Continuous Deployment** workflow
+1. Click the running **Deploy to GitHub Pages** workflow
 1. Wait for the workflow run to complete
 1. Click the **Code** tab
 1. Click the link to your game

@@ -1,10 +1,14 @@
 # This is a simple workflow to manually deploy your project to GitHub Pages.
 # This should be used if you are running into issues with the current deployment
 # and want to redeploy the project.
-name: Manual Deployment to GitHub Pages
+name: Deploy to GitHub Pages
 
-# This workflow can only be invoked manually.
+# This workflow is invoked automatically on push to `main`, and can be invoked
+# manually using the "Run workflow" button in the Actions tab of the repository.
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 # Base permissions required to deploy to GitHub Pages.

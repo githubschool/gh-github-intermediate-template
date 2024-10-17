@@ -85,61 +85,6 @@ interact with tags. For now, you'll simply push the tags to GitHub.
 
    ![Annotated Tag](./img/2-annotated-tag.png)
 
-## Task 4: Commit your Changes
-
-Now that you've tested the feature, you should commit your changes to your
-feature branch.
-
-1. Open the terminal or command prompt
-1. Add your changes to the staging area
-
-   ```bash
-   git add index.html
-   ```
-
-1. Commit your changes
-
-   ```bash
-   git commit -m 'Add game rules to index.html'
-   ```
-
-## Task 5: Switch to the `main` Branch
-
-Now that you've added the feature, you should switch back to the `main` branch
-so you can start working on something new!
-
-1. Checkout the `main` branch
-
-   ```bash
-   git checkout main
-   ```
-
-## Task 6: Merge the `rules` Branch
-
-Now that you're on the `main` branch, you should merge the `rules` branch into
-the `main` branch. That way, when your changes are pushed, the rules will be
-displayed on GitHub Pages the next time you refresh.
-
-1. Merge the `rules` branch into the `main` branch
-
-   ```bash
-   git merge rules
-   ```
-
-1. Push your changes to GitHub
-
-   ```bash
-   git push
-   ```
-
-1. Navigate to your repository on GitHub.com
-1. Click the **Actions** tab
-1. Click the running **Continuous Deployment** workflow
-1. Wait for the workflow run to complete
-1. Click the **Code** tab
-1. Click the link to your game
-1. Verify the rules are now displayed on the game page
-
 ## Need Help?
 
 If you're having trouble with any of the steps, you can ask for help in the

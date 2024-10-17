@@ -15,7 +15,7 @@ feature.
 1. Checkout the feature branch
 
    ```bash
-   git checkout feature/lab-4
+   git checkout feature/animate-score
    ```
 
 1. Verify the feature branch is behind `main`
@@ -24,14 +24,14 @@ feature.
    git log --oneline --graph --all
    ```
 
-   In the graph output, you should see that the `feature/lab-4` branch was
-   created from an earlier commit on `main`.
+   In the graph output, you should see that the `feature/animate-score` branch
+   was created from an earlier commit on `main`.
 
    ```plain
    * a4f1x35 Update scoreboard size
    * f723e2f Remove comment
    * d2b828f Revert change
-   | * 0f3cb0b (HEAD -> feature/lab-4) Animate score update
+   | * 0f3cb0b (HEAD -> feature/animate-score) Animate score update
    |/
    * 35710de (origin/main) Add watch script
    * 6181c9c Update ESLint config
@@ -56,9 +56,9 @@ feature.
    pick d2b828f Revert change
    ```
 
-   In this exercise, we want to combine all the commits on the `feature/lab-4`
-   branch into a single commit. This will make it easier to follow the changes
-   in the commit history.
+   In this exercise, we want to combine all the commits on the
+   `feature/animate-score` branch into a single commit. This will make it easier
+   to follow the changes in the commit history.
 
 1. Update the commit list to squash all the commits into a single commit and
    modify the commit message.
@@ -88,11 +88,11 @@ feature.
    git log --oneline --graph --all
    ```
 
-   In the graph output, you should see that the `feature/lab-4` branch is now
-   based on the most recent commit on `main`.
+   In the graph output, you should see that the `feature/animate-score` branch
+   is now based on the most recent commit on `main`.
 
    ```plain
-   * 0f3cb0b (HEAD -> feature/lab-4) Animate score update
+   * 0f3cb0b (HEAD -> feature/animate-score) Animate score update
    * 35710de (origin/main) Add watch script
    * 6181c9c Update ESLint config
    ```
@@ -100,7 +100,7 @@ feature.
    > In the example above, the topmost commit message should be set to whatever
    > value you provided in the previous steps.
 
-## Task 4: Merge the `feature/lab-4` Branch
+## Task 4: Merge the `feature/animate-score` Branch
 
 Now that you've rebased the feature branch, you should switch back to the `main`
 branch so you can merge your changes!
@@ -111,10 +111,10 @@ branch so you can merge your changes!
    git checkout main
    ```
 
-1. Merge the `feature/lab-4` branch into the `main` branch
+1. Merge the `feature/animate-score` branch into the `main` branch
 
    ```bash
-   git merge feature/lab-4
+   git merge feature/animate-score
    ```
 
 1. Push your changes to GitHub
@@ -125,7 +125,7 @@ branch so you can merge your changes!
 
 1. Navigate to your repository on GitHub.com
 1. Click the **Actions** tab
-1. Click the running **Continuous Deployment** workflow
+1. Click the running **Deploy to GitHub Pages** workflow
 1. Wait for the workflow run to complete
 1. Click the **Code** tab
 1. Click the link to your game
