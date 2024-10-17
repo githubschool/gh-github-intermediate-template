@@ -75,9 +75,69 @@ feature.
    > **Hint:** If you are using VI or VIM, you can save and close the editor by
    > pressing `ESC`, typing `:wq`, and pressing `Enter`.
 
+1. You will be prompted to modify the message for the reworded commit. The
+   message will be pre-filled with the original commit message. If you want to
+   keep the original message, simply save and close the file. Otherwise, modify
+   the message as needed and save and close the file.
+
+## Task 3: Verify the Feature Branch
+
+1. Verify that the feature branch is now up to date with `main`
+
+   ```bash
+   git log --oneline --graph --all
+   ```
+
+   In the graph output, you should see that the `feature/lab-4` branch is now
+   based on the most recent commit on `main`.
+
+   ```plain
+   * 0f3cb0b (HEAD -> feature/lab-4) Animate score update
+   * 35710de (origin/main) Add watch script
+   * 6181c9c Update ESLint config
+   ```
+
+   > In the example above, the topmost commit message should be set to whatever
+   > value you provided in the previous steps.
+
+## Task 4: Merge the `feature/lab-4` Branch
+
+Now that you've rebased the feature branch, you should switch back to the `main`
+branch so you can merge your changes!
+
+1. Checkout the `main` branch
+
+   ```bash
+   git checkout main
+   ```
+
+1. Merge the `feature/lab-4` branch into the `main` branch
+
+   ```bash
+   git merge feature/lab-4
+   ```
+
+1. Push your changes to GitHub
+
+   ```bash
+   git push
+   ```
+
+1. Navigate to your repository on GitHub.com
+1. Click the **Actions** tab
+1. Click the running **Continuous Deployment** workflow
+1. Wait for the workflow run to complete
+1. Click the **Code** tab
+1. Click the link to your game
+1. Verify the rules are now displayed on the game page
+
 ## Need Help?
 
 If you're having trouble with any of the steps, you can ask for help in the
 meeting chat.
 
 The code changes for this lab can be found in the `solutions` directory.
+
+- Copy the contents of
+  [`solutions/4-interactive-rebase/html_actuator.ts`](../solutions/4-interactive-rebase/html_actuator)
+  and replace the contents of [`src/html_actuator.ts`](../src/html_actuator.ts)
