@@ -141,23 +141,19 @@ export class HTMLActuator {
   /**
    * Updates the Score
    *
+   * @todo The score update should be animated
+   *
    * @param score Score
    */
   static updateScore(score: number): void {
+    // Clear the current score
     HTMLActuator.clearContainer(HTMLActuator.scoreContainer)
 
-    const difference = score - HTMLActuator.score
+    // Set the new score
     HTMLActuator.score = score
 
+    // Update the score
     HTMLActuator.scoreContainer.textContent = HTMLActuator.score.toString()
-
-    if (difference > 0) {
-      const addition = document.createElement('div')
-      addition.classList.add('score-addition')
-      addition.textContent = '+' + difference
-
-      HTMLActuator.scoreContainer.appendChild(addition)
-    }
   }
 
   /**
