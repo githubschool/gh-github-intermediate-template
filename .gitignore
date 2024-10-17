@@ -12,3 +12,6 @@ reports
 
 # Linter Reports
 megalinter-reports/
+
+# Build Artifacts
+dist/
