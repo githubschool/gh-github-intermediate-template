@@ -816,7 +816,7 @@ class GameManager {
 
 window.requestAnimationFrame(function () {
     animFramePolyfill();
-    // Initialize the game
-    new GameManager(4);
+    // Lab 6: Grid Size
+    new GameManager(3);
 });
 //# sourceMappingURL=application.js.map
