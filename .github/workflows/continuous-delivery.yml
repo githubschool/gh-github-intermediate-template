@@ -29,12 +29,6 @@ jobs:
     name: Release Node.js Project
     runs-on: ubuntu-latest
 
-    # Only run this job when non-Dependabot PRs are merged or when run manually.
-    if: |
-      github.event_name == 'workflow_dispatch' ||
-      (github.event.pull_request.merged == true &&
-      startsWith(github.head_ref, 'dependabot/') == false)
-
     steps:
       - name: Checkout
         id: checkout

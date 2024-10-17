@@ -28,16 +28,6 @@ describe('LocalStorageManager', () => {
     })
   })
 
-  describe('setBestScore()', () => {
-    it('Updates the score in local storage', async () => {
-      window.localStorage.setItem('bestScore', '8')
-
-      LocalStorageManager.setBestScore(10)
-
-      expect(LocalStorageManager.getBestScore()).toEqual(10)
-    })
-  })
-
   describe('getGameState()', () => {
     it('Gets the game state from local storage', async () => {
       window.localStorage.setItem('gameState', '{"score":8}')

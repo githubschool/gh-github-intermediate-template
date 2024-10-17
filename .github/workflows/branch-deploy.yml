@@ -20,7 +20,9 @@ permissions:
   actions: read
   checks: write
   contents: write
+  deployments: write
   id-token: write
+  pages: write
   pull-requests: write
 
 jobs:
@@ -52,8 +54,8 @@ jobs:
         with:
           environment: github-pages
           environment_targets: github-pages
-          skip_ci: true
-          skip_reviews: true
+          skip_ci: github-pages
+          skip_reviews: github-pages
           skip_completing: true
 
   deploy:
@@ -74,6 +76,7 @@ jobs:
     # prettier-ignore
     outputs:
       outcome: ${{ steps.deploy.outcome == 'success' && 'success' || 'failure' }}
+      page_url: ${{ steps.deploy.outputs.page_url }}
 
     steps:
       # Checkout repository based on the ref provided by the branch-deploy step.
@@ -119,6 +122,7 @@ jobs:
       DEPLOYMENT_STATUS: ${{ needs.deploy.outputs.outcome || 'failure' }}
       ENVIRONMENT: ${{ needs.start.outputs.environment }}
       GITHUB_TOKEN: ${{ github.token }}
+      PAGE_URL: ${{ needs.deploy.outputs.page_url }}
       REACTION_ID: ${{ needs.start.outputs.initial_reaction_id }}
       REF: ${{ needs.start.outputs.ref }}
       REPOSITORY: ${{ github.repository }}
@@ -199,7 +203,7 @@ jobs:
 
             **${{ env.ACTOR }}** successfully deployed branch \`${{ env.REF }}\` to **${{ env.ENVIRONMENT }}**
 
-            TODO: URL to the deployment`
+            Page URL: [\`${{ env.PAGE_URL }}\`](${{ env.PAGE_URL }})`
             })
 
       - if: ${{ env.DEPLOYMENT_STATUS == 'failure' }}

@@ -1,6 +1,8 @@
 # Lab 1: Add a Feature
 
-In this lab, you're going to add a feature to your game.
+In this lab, you're going to add a feature to your game. The initial version of
+the game has already been deployed to GitHub Pages. The link can be found in the
+**About** section of your repository on GitHub.com.
 
 ## Scenario
 

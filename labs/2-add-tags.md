@@ -49,7 +49,7 @@ versions of the game.
    step.
 
    ```bash
-   git tag -a v1.0.0 -m "Release version 1.0.0" <sha>
+   git tag -a v0.1.0 -m "Release version 0.1.0" <sha>
    ```
 
 1. Create lightweight tags for the major and minor versions
@@ -58,8 +58,8 @@ versions of the game.
    step.
 
    ```bash
-   git tag v1.0 <sha>
-   git tag v1 <sha>
+   git tag v0.1 <sha>
+   git tag v0 <sha>
    ```
 
 ## Task 3: Push the Tags to GitHub
@@ -81,7 +81,7 @@ interact with tags. For now, you'll simply push the tags to GitHub.
 
    ![Tags](./img/2-tags.png)
 
-1. Click the **v1.0.0** tag to view the annotated tag notes
+1. Click the **v0.1.0** tag to view the annotated tag notes
 
    ![Annotated Tag](./img/2-annotated-tag.png)
 

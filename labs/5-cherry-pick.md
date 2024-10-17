@@ -5,9 +5,8 @@ branches.
 
 ## Scenario
 
-You've completed et's "accidentally" commit some changes to `main`, then
-cherry-pick them into a feature branch and remove the commits from the default
-branch.
+Let's "accidentally" commit some changes to `main`, then cherry-pick them into a
+feature branch and remove the commits from the default branch.
 
 ## Task 1: Create a Feature Branch
 
