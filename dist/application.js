@@ -493,7 +493,7 @@ class LocalStorageManager {
      * @param score Best Score
      */
     static setBestScore(score) {
-        LocalStorageManager.storage.setItem('bestScore', score.toString());
+        // Lab 11: Update Best Score
     }
     /**
      * Gets the game state.
