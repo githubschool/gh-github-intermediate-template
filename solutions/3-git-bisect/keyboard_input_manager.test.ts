@@ -9,20 +9,6 @@ describe('KeyboardInputManager', () => {
     jest.resetAllMocks()
   })
 
-  describe('constructor', () => {
-    it('Sets events and listens', async () => {
-      // Lab 3: Git Bisect
-      const listen = jest
-        .spyOn(KeyboardInputManager, 'listen')
-        .mockImplementation(() => {})
-
-      new KeyboardInputManager()
-
-      expect(KeyboardInputManager.events).toMatchObject({})
-      expect(listen).toHaveBeenCalledTimes(1)
-    })
-  })
-
   describe('on()', () => {
     it('Registers an event listener', async () => {
       KeyboardInputManager.events['test'] = []
@@ -89,6 +75,20 @@ describe('KeyboardInputManager', () => {
 
       expect(emit).toHaveBeenCalledTimes(1)
       expect(preventDefault).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  describe('constructor', () => {
+    it('Sets events and listens', async () => {
+      // Lab 3: Git Bisect
+      const listen = jest
+        .spyOn(KeyboardInputManager, 'listen')
+        .mockImplementation(() => {})
+
+      new KeyboardInputManager()
+
+      expect(KeyboardInputManager.events).toMatchObject({})
+      expect(listen).toHaveBeenCalledTimes(1)
     })
   })
 
