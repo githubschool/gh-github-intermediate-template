@@ -89,7 +89,7 @@ environment when a comment is made on a pull request (often referred to as
    As you play the game, your high score should now be saved in the **BEST**
    box.
 
-   ![Best Score](./images/best-score.png)
+   ![Best Score](./img/11-best-score.png)
 
 ## Task 4: Roll Back the Deployment
 
