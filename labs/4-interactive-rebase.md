@@ -28,6 +28,7 @@ feature.
    was created from an earlier commit on `main`.
 
    ```plain
+   ...
    * a4f1x35 Update scoreboard size
    * f723e2f Remove comment
    * d2b828f Revert change
