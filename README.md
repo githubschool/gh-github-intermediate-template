@@ -22,7 +22,17 @@ column of the repository's home page.
 
 ## Activities and Labs
 
-TODO: Add a list of activities and labs that are included in this training.
+- [Lab 1: Add a Feature](./labs/1-add-a-feature.md)
+- [Lab 2: Add Tags](./labs/2-add-tags.md)
+- [Lab 3: Git Bisect](./labs/3-git-bisect.md)
+- [Lab 4: Interactive Rebase](./labs/4-interactive-rebase.md)
+- [Lab 5: Cherry-Picking Commits](./labs/5-cherry-pick.md)
+- [Lab 6: Protect the `main` Branch](./labs/6-protect-main.md)
+- [Lab 7: GitHub Flow](./labs/7-github-flow.md)
+- [Lab 8: Merge Conflicts](./labs/8-merge-conflicts.md)
+- [Lab 9: Run a GitHub Actions Workflow](./labs/9-run-a-workflow.md)
+- [Lab 10: Create a Release](./labs/10-create-a-release.md)
+- [Lab 11: Deploy to an Environment](./labs/11-deploy-to-an-environment.md)
 
 ## Reference
 
