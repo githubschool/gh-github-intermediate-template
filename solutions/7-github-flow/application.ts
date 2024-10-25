@@ -4,6 +4,6 @@ import { GameManager } from './game_manager.js'
 window.requestAnimationFrame(function () {
   animFramePolyfill()
 
-  // Lab 6: Grid Size
+  // Lab 7: Grid Size
   new GameManager(5)
 })

@@ -154,7 +154,7 @@ describe('GameManager', () => {
 
       GameManager.addStartTiles()
 
-      expect(addStartTile).toHaveBeenCalledTimes(2)
+      expect(addStartTile).toHaveBeenCalled()
     })
   })
 

@@ -33,7 +33,7 @@ environment when a comment is made on a pull request (often referred to as
    git checkout -b feature/high-score
    ```
 
-1. Open the [`src/local_storage_manager.ts`](./src/local_storage_manager.ts)
+1. Open the [`src/local_storage_manager.ts`](../src/local_storage_manager.ts)
    file
 1. Locate the comment `// Lab 11: Update Best Score`
 1. Add the following code below the comment
@@ -72,26 +72,19 @@ environment when a comment is made on a pull request (often referred to as
 1. In the comment text field, enter `.deploy`
 
    In a few seconds, you should see a comment is automatically to the pull
-   request stating a deployment is in progress.
+   request stating a deployment is in progress. You should also see that a
+   deployment has been initiated.
 
-   <!-- TODO Screenshot -->
-
-   You should also see that a deployment has been initiated.
-
-   <!-- TODO Screenshot -->
+   ![Start Deployment](./img/11-start-deployment.png)
 
 1. Wait for the deployment to complete
-
-   <!-- TODO Screenshot -->
 
    Another comment will be added to the pull request with a link to the
    deployment.
 
-   <!-- TODO Screenshot -->
+   ![Deployment Complete](./img/11-deployment-complete.png)
 
 1. Click the link to view the deployed game
-
-   <!-- TODO Screenshot -->
 
    As you play the game, your high score should now be saved in the **BEST**
    box.
@@ -108,26 +101,19 @@ is merged.
 1. In the comment text field, enter `.deploy main`
 
    In a few seconds, you should see a comment is automatically to the pull
-   request stating a deployment is in progress.
+   request stating a deployment is in progress. You should also see that a
+   deployment has been initiated.
 
-   <!-- TODO Screenshot -->
-
-   You should also see that a deployment has been initiated.
-
-   <!-- TODO Screenshot -->
+   ![Start Rollback](./img/11-start-rollback.png)
 
 1. Wait for the deployment to complete
 
-   <!-- TODO Screenshot -->
-
-   Another comment will be added to the pull request with a link to the
+   Another comment will be added to the pull request with a link to the rollback
    deployment.
 
-   <!-- TODO Screenshot -->
+   ![Rollback Complete](./img/11-rollback-complete.png)
 
 1. Click the link to view the deployed game
-
-   <!-- TODO Screenshot -->
 
    As you play the game, your high score should no longer be saved.
 

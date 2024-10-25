@@ -20,7 +20,7 @@ changes that have been made, and also to provide a changelog for our users.
 1. Create a new release branch
 
    ```bash
-   git checkout -b release/v1.0.0
+   git checkout -b release/v2.0.0
    ```
 
 ## Task 2: Update the Release Version
@@ -30,13 +30,13 @@ releases and changelogs. In order to generate a release, you will need to update
 the version number in the `package.json` file.
 
 1. Open the [`package.json`](../package.json) file in your editor
-1. Change the value of the `version` key to `1.0.0`
+1. Change the value of the `version` key to `2.0.0`
 
    ```jsonc
    {
      "name": "@githubschool/gh-github-intermediate-template",
      "description": "GitHub Intermediate Training - Template",
-     "version": "1.0.0",
+     "version": "2.0.0",
      // ...
    ```
 
@@ -45,10 +45,10 @@ the version number in the `package.json` file.
 
    ```bash
    git add package.json
-   git commit -m "Release version 1.0.0"
+   git commit -m "Release version 2.0.0"
    ```
 
-1. Push the `release/v1.0.0` branch to GitHub
+1. Push the `release/v2.0.0` branch to GitHub
 
    ```bash
    git push
@@ -59,7 +59,7 @@ the version number in the `package.json` file.
 1. In your browser, navigate to your repository on GitHub
 1. Click on the **Pull requests** tab
 1. Click the **New pull request** button
-1. Click the **Compare** button, then select your `release/v1.0.0` branch
+1. Click the **Compare** button, then select your `release/v2.0.0` branch
 1. Click **Create pull request**
 1. Enter a title and description for your PR
 1. Click **Create pull request**
@@ -80,7 +80,7 @@ As other people in the class post their PRs, try to review and approve one.
 1. Ensure **Approve** is selected as the review type
 1. Click **Submit review**
 
-   ![Approved PR](images/approved-pr.png)
+   ![Approved PR](img/11-approved-pr.png)
 
 ## Task 5: Merge the Pull Request
 
@@ -107,13 +107,13 @@ Once your PR has been approved, you can merge it into `main`.
 ## Task 7: View the Release
 
 1. In your browser, navigate to your repository on GitHub
-1. Click on the **v1.0.0** link in the **Releases** section
+1. Click on the **v2.0.0** link in the **Releases** section
 
    ![Releases](img/10-releases.png)
 
 1. Review the auto-generated release notes
 
-   <!-- TODO Screenshot -->
+   ![Release Notes](img/10-release-notes.png)
 
 ## Need Help?
 

@@ -35,6 +35,7 @@ feature branch and remove the commits from the default branch.
 1. Add the following code below the comment
 
    ```ts
+   // Lab 5: New Game Button
    KeyboardInputManager.bindButtonPress(
      '.restart-button',
      KeyboardInputManager.restart

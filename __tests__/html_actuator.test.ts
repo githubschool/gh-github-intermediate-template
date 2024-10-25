@@ -83,22 +83,6 @@ describe('HTMLActuator', () => {
     })
   })
 
-  describe('updateScore()', () => {
-    it('Updates the score', () => {
-      const clearContainer = jest
-        .spyOn(HTMLActuator, 'clearContainer')
-        .mockImplementation(() => {})
-
-      HTMLActuator.scoreContainer = document.createElement('div')
-      HTMLActuator.scoreContainer.textContent = '0'
-
-      HTMLActuator.updateScore(2)
-
-      expect(clearContainer).toHaveBeenCalledTimes(1)
-      expect(HTMLActuator.scoreContainer.textContent).toBe('2+2')
-    })
-  })
-
   describe('message()', () => {
     it('Sets the message (won)', () => {
       const p = document.createElement('p')

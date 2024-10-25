@@ -32,7 +32,8 @@ introduced, but you know it wasn't there when you first created the game.
    ```
 
    From the output of the above command, find a commit where the code change is
-   not present and copy the commit hash.
+   not present and copy the commit hash. You can simply select the earliest
+   commit in the logs (the one labeled `Initial commit`).
 
 1. Indicate a commit where you know the code does not contain the change you're
    looking for
@@ -61,11 +62,10 @@ ones.
    # Found
    $ grep -w "expect(true).toBe(false)" __tests__/keyboard_input_manager.test.ts
     expect(true).toBe(false);
-   $
 
    # Not found
    $ grep -w "expect(true).toBe(false)" __tests__/keyboard_input_manager.test.ts
-   $
+
    ```
 
 1. If the change is present, tell `git bisect` that the current commit is bad
@@ -128,6 +128,7 @@ ones.
    Make sure to replace `expect(true).toBe(false)` with the correct test code.
 
    ```typescript
+   // Lab 3: Git Bisect
    const listen = jest
      .spyOn(KeyboardInputManager, 'listen')
      .mockImplementation(() => {})

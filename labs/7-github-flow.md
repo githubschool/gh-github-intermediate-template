@@ -34,7 +34,7 @@ into `main`.
 1. Update the input parameter to `GameManager` to `5` instead of `3`
 
    ```ts
-   // Lab 6: Grid Size
+   // Lab 7: Grid Size
    new GameManager(5)
    ```
 
