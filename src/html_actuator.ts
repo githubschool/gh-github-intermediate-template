@@ -150,6 +150,7 @@ export class HTMLActuator {
     HTMLActuator.clearContainer(HTMLActuator.scoreContainer)
 
     // Get the difference between the current score and the new score
+    // @ts-expect-error This will be used in the future
     const difference = score - HTMLActuator.score
 
     // Set the new score
