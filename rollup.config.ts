@@ -4,13 +4,8 @@ import typescript from '@rollup/plugin-typescript'
 
 const config = {
   input: 'src/application.ts',
-  output: {
-    esModule: true,
-    dir: 'dist',
-    format: 'es',
-    sourcemap: true
-  },
-  plugins: [typescript(), nodeResolve(), commonjs()]
+  output: { esModule: true, dir: 'dist', format: 'es' },
+  plugins: [typescript(), nodeResolve({ preferBuiltins: true }), commonjs()]
 }
 
 export default config

@@ -1,9 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "./tsconfig.base.json",
-  "compilerOptions": {
-    "noEmit": true
-  },
+  "compilerOptions": { "allowJs": true, "noEmit": true },
   "exclude": ["dist", "node_modules"],
   "include": [
     "__fixtures__",
@@ -12,6 +10,7 @@
     "labs",
     "solutions",
     "src",
+    "eslint.config.mjs",
     "jest.config.ts",
     "rollup.config.ts"
   ]
