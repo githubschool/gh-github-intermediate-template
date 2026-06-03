@@ -14,7 +14,7 @@ web-based game deployed to GitHub Pages.
 Once deployed, you will be able to access your game at the link in the **About**
 column of the repository's home page.
 
-HOLA
+HOLA!
 
 ## Prerequisites
 
