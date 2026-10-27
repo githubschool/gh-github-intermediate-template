@@ -1,5 +1,6 @@
 # GitHub Intermediate - Project Repository
-
+This is an update to the README.md file!
+This is an update to the README.md file2!
 ![Continuous Integration](https://github.com/githubschool/gh-github-intermediate-template/actions/workflows/continuous-integration.yml/badge.svg)
 ![Continuous Delivery](https://github.com/githubschool/gh-github-intermediate-template/actions/workflows/continuous-delivery.yml/badge.svg)
 ![CodeQL](https://github.com/githubschool/gh-github-intermediate-template/actions/workflows/codeql.yml/badge.svg)

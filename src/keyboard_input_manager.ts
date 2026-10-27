@@ -81,7 +81,12 @@ export class KeyboardInputManager {
       KeyboardInputManager.keepPlaying
     )
 
-    // Lab 5: New Game Button
+   // Lab 5: New Game Button
+KeyboardInputManager.bindButtonPress(
+  '.restart-button',
+  KeyboardInputManager.restart
+)
+
   }
 
   /**
