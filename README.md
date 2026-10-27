@@ -12,7 +12,9 @@ working on throughout the training. The final completed project will be a
 web-based game deployed to GitHub Pages.
 
 Once deployed, you will be able to access your game at the link in the **About**
-column of the repository's home page.
+column of the repository's home page. 
+
+TESTTESTTESTcheckout Let us update the README
 
 ## Prerequisites
 
